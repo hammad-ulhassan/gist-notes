@@ -7,6 +7,7 @@ import {
 import stubColumns from "../../../stubData/columns.json";
 import stubData from "../../../stubData/MOCK_DATA.json";
 import Column from "antd/lib/table/Column";
+import './DataTable.css';
 
 export default class DataTable extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ export default class DataTable extends React.Component {
     };
     const hasSelected = selectedRowKeys.length > 0;
     return (
-      <Table rowSelection={rowSelection} dataSource={this.dataSource}>
+      <Table rowSelection={rowSelection} dataSource={this.dataSource} scroll={{ y: 550 }}>
         {this.columns.map((col) => (
           <Column title={col.title} dataIndex={col.dataIndex} key={col.key} />
         ))}
