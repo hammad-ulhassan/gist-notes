@@ -9,7 +9,7 @@ import { SearchOutlined} from '@ant-design/icons';
 export default class Header extends React.Component {
   render() {
     return (
-      <header className="header-style emumba-green">
+      <header className="flex-row header-style emumba-green">
         <Logo fillColor="#ffffff" />
         <div className="flex-row">
           <Input 

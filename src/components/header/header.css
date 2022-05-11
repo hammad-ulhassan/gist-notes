@@ -3,13 +3,8 @@
     left: 0;
     width: 100%;
     position: fixed;
-    display: flex;
-    flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
     align-content: center;
-    gap: 1.25rem;
     align-self: flex-start;
     height: 1rem;
     padding: 2rem 9rem;
@@ -22,6 +17,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 1.25rem;
+    box-sizing: border-box;
 }
 
 
