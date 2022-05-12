@@ -1,19 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import Header from './components/header/header';
-import Main from './components/main/main';
+import MainLayout from './pages/MainLayout/MainLayout';
+import Home from './pages/Home/Home';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Empty from './pages/Empty/Empty';
 
 
 class App extends React.Component{
   render(){
-    return(
-      <>
-        <Header/>
-        <Main/>
-      </>
-        
-    )
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route path="home" element={<Home />} />
+            <Route path="*" element={<Empty />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    );
   }
 }
 

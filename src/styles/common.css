@@ -1,0 +1,9 @@
+.row{
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+}
+
+.gray{
+    color: var(--gray);
+}

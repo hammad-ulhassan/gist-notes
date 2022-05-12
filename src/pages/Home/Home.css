@@ -1,0 +1,18 @@
+@import url("../../styles/common.css");
+
+section{
+    padding: 1rem;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+}
+
+.all-cards{
+    display:grid; 
+    grid-template-columns:1fr 1fr 1fr;
+    gap: 1rem;
+}

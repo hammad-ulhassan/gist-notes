@@ -4,54 +4,50 @@ import {
   StarOutlined,
   ForkOutlined
 } from '@ant-design/icons';
-import stubColumns from "../../../stubData/columns.json";
-import stubData from "../../../stubData/MOCK_DATA.json";
+import stubColumns from "../../stubData/columns.json";
+import stubData from "../../stubData/MOCK_DATA.json";
 import Column from "antd/lib/table/Column";
 import './DataTable.css';
 
 export default class DataTable extends React.Component {
   constructor(props) {
     super(props);
-    this.dataSource = stubData.map((person) => ({
-      ...person,
-      name: person.first_name + " " + person.last_name,
-    }));
-    this.columns = stubColumns;
-
-    this.state = {
-      selectedRowKeys: [],
-      loading: false,
-    };
   }
 
   onSelectChange = (selectedRowKeys) => {
-    console.log("selectedRowKeys changed: ", selectedRowKeys);
-    this.setState({ selectedRowKeys });
+    this.props.handleOnSelectChange({ selectedRowKeys });
   };
 
   render() {
-    const { loading, selectedRowKeys } = this.state;
+    const { loading, selectedRowKeys, columns, dataSource } = this.props;
     const rowSelection = {
       selectedRowKeys,
       onChange: this.onSelectChange,
     };
     const hasSelected = selectedRowKeys.length > 0;
     return (
-      <Table rowSelection={rowSelection} dataSource={this.dataSource} scroll={{ y: 550 }}>
-        {this.columns.map((col) => (
+      <Table
+        rowSelection={rowSelection}
+        dataSource={dataSource}
+        scroll={{ y: 550 }}
+        loading={loading}
+      >
+        {columns.map((col) => (
           <Column title={col.title} dataIndex={col.dataIndex} key={col.key} />
         ))}
         <Column
           key="action"
           render={(text, record) => (
             <Space size="middle">
-              <a>
-                <StarOutlined />
-              </a>
+              <div className="row">
+                <a>
+                  <StarOutlined />
+                </a>
 
-              <a>
-                <ForkOutlined />
-              </a>
+                <a>
+                  <ForkOutlined />
+                </a>
+              </div>
             </Space>
           )}
         />

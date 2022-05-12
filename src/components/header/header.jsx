@@ -1,6 +1,6 @@
 import React from "react";
-import Logo from "./logo/logo";
-import './header.css'
+import Logo from "../Logo/Logo";
+import './Header.css'
 import { Input } from 'antd';
 import { Button } from 'antd';
 import { SearchOutlined} from '@ant-design/icons';
