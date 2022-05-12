@@ -7,7 +7,8 @@ import columns from "../../stubData/columns.json";
 import UserCard from "../../components/UserCard/UserCard";
 import CardsWrapper from "../../components/CardsWrapper/CardsWrapper";
 import CodeView from "../../components/CodeView/CodeView";
-import {stubCode} from '../../stubData/stubCode';
+import { stubCode } from "../../stubData/stubCode";
+import { Pagination } from "antd";
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -17,18 +18,18 @@ export default class Home extends React.Component {
       data,
       columns,
       loading: false,
-      view: 'table'
+      view: "table",
     };
     this.handleOnSelectChange = this.handleOnSelectChange.bind(this);
-    this.onViewChange = this.onViewChange.bind(this)
+    this.onViewChange = this.onViewChange.bind(this);
   }
 
-  handleOnSelectChange({selectedRowKeys}) {
+  handleOnSelectChange({ selectedRowKeys }) {
     this.setState({ selectedRowKeys: [selectedRowKeys] });
   }
 
-  onViewChange(selectedView){
-    this.setState({view: selectedView})
+  onViewChange(selectedView) {
+    this.setState({ view: selectedView });
   }
 
   render() {
@@ -36,10 +37,11 @@ export default class Home extends React.Component {
       <div className="container">
         <section>
           <div className="row">
-            <BtnGrp onViewChange={this.onViewChange} view={this.state.view}/>
+            <BtnGrp onViewChange={this.onViewChange} view={this.state.view} />
           </div>
         </section>
         <section>
+          {this.state.view}
           {/* <DataTable
             handleOnSelectChange={this.handleOnSelectChange}
             dataSource={this.state.data.map(person=>({...person, name: person.first_name+' '+person.last_name}))}
@@ -48,10 +50,18 @@ export default class Home extends React.Component {
             selectedRowKeys={this.state.selectedRowKeys}
           /> */}
           <CardsWrapper>
-            <UserCard size="small">
-              <CodeView code={stubCode}/>
-            </UserCard>
+            {Array(10)
+              .fill()
+              .map((_, i) => (
+                <UserCard size="small" key={i}>
+                  <CodeView code={stubCode} />
+                  <hr />
+                </UserCard>
+              ))}
           </CardsWrapper>
+        </section>
+        <section>
+          <Pagination simple defaultCurrent={2} total={50} />
         </section>
       </div>
     );

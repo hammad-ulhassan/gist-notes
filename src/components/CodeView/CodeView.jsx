@@ -25,8 +25,7 @@ export default class CodeView extends React.Component {
   }
 
   render() {
-    const { rows, code } = this.props;
-    this.ellipsisProps.rows = rows;
+    const { code } = this.props;
     return (
       <CodeWrapper>
         {code.map((line, i) => (
