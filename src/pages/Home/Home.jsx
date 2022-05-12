@@ -48,8 +48,8 @@ export default class Home extends React.Component {
             selectedRowKeys={this.state.selectedRowKeys}
           /> */}
           <CardsWrapper>
-            <UserCard>
-              <CodeView rows={14} code={stubCode}></CodeView>
+            <UserCard size="small">
+              <CodeView code={stubCode}/>
             </UserCard>
           </CardsWrapper>
         </section>
